@@ -1,6 +1,7 @@
 // Load Gulp
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
+    concat = require('gulp-concat'),
     plugins = require('gulp-load-plugins')({
         rename: {
             'gulp-live-server': 'serve'
@@ -62,6 +63,7 @@ gulp.task('build-css', function () {
                 ],
             cascade: false
         }))
+        .pipe(concat('all.css'))
         .pipe(plugins.cssmin())
         .pipe(gulp.dest('build')).on('error', gutil.log);
 });
